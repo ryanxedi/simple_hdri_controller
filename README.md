@@ -44,15 +44,6 @@ Texture Coordinate → Mapping → Environment Texture → Background → World 
 
 ## Troubleshooting
 
-### “'_RestrictContext' object has no attribute 'scene'”
-This can happen if Blender enables the add-on in a restricted context (e.g. during installation).  
-**Fix:** v1.0.1+ defers scene/world access until you open the panel or run an operator. If you still see this:
-- Ensure you’re on **v1.0.1 or later** of the add-on.
-- Switch to a regular 3D Viewport and open the **HDRI** panel once.
-
-### Rotation seems slow or doesn’t loop at 360
-Ensure you’re on the fixed version where rotation is applied in **radians** without double‑conversion (v1.0.2+). 360 now returns to the start.
-
 ### Background looks black / no lighting
 - Use **Rendered** view (Eevee or Cycles).
 - Confirm the HDRI is loaded (its name appears in the **HDRI** slot).
@@ -92,20 +83,5 @@ furnished to do so, subject to the following conditions:
 ...
 ```
 
-(Or choose any licence you prefer.)
-
-## Credits
-Built by Ryan + ChatGPT. HDRI icons and screenshots in this repo (if any) belong to their respective owners.
 
 ---
-
-### Suggested Repo Structure
-```
-/ (repo root)
-├─ simple_hdri_controller.py
-├─ README.md
-├─ LICENSE
-└─ media/
-   ├─ screenshot_panel.png
-   └─ demo.gif
-```
