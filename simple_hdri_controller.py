@@ -103,14 +103,13 @@ def apply_hdri_image(ctx, image):
     env = nodes["env"]
     env.image = image if image and image.type == 'IMAGE' else None
 
-def set_hdri_rotation_deg(ctx, degrees):
+def set_hdri_rotation(ctx, angle_rad):
     nodes = ensure_world_node_setup(ctx)
     if not nodes:
         return
     mapping = nodes["mapping"]
-    rot = list(mapping.inputs["Rotation"].default_value)
-    rot[2] = radians(degrees)
-    mapping.inputs["Rotation"].default_value = rot
+    rot = mapping.inputs["Rotation"].default_value
+    rot[2] = angle_rad  # already radians when using subtype='ANGLE'
 
 def set_hdri_strength(ctx, strength):
     nodes = ensure_world_node_setup(ctx)
@@ -125,7 +124,7 @@ def _update_image(self, context):
     apply_hdri_image(context, self.image)
 
 def _update_rotation(self, context):
-    set_hdri_rotation_deg(context, self.rotation_deg)
+    set_hdri_rotation(context, self.rotation_deg)
 
 def _update_strength(self, context):
     set_hdri_strength(context, self.strength)
